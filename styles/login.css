@@ -1,0 +1,389 @@
+body {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    background-color: var(--bg-base-200);
+}
+
+.registry-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 0 1rem;
+    flex-grow: 1;
+    gap: 3rem;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(246, 247, 248, 1);
+    opacity: 1;
+    transition: opacity 1000ms ease;
+}
+
+.overlay.dark {
+    background-color: var(--bg-primary);
+}
+
+.overlay.start {
+    opacity: 0;
+}
+
+.overlay.complete {
+    display: none;
+}
+
+.main-logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 200;
+    width: 16rem;
+    height: auto;
+    transform: translate(-50%, -50%);
+    animation: fadeIn 1000ms ease forwards, slideToPosition ease 1000ms forwards;
+    animation-delay: 0ms, 1000ms;
+}
+
+.call-to-signup {
+    position: absolute;
+    top: 4rem;
+    right: 4.5rem;
+    align-items: center;
+    gap: 2rem;
+    color: var(--base-content);
+}
+
+button.btn-link {
+    all: unset;
+    text-decoration: underline;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color:  var(--bg-accent);
+    cursor: pointer;
+}
+
+.login-wrapper,
+.signup-wrapper {
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 40rem;
+    padding: 3rem 1rem;
+    background-color: var(--bg-base-100);
+    border-radius: 1.875rem;
+    box-shadow: var(--shadow-lg);
+}
+
+.login-header,
+.signup-header {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: center;
+}
+
+#back-to-login {
+    position: absolute;
+    top: 3rem;
+    left: 2rem;
+}
+
+.login-header h1,
+.signup-header h1 {
+    font-size: 3.5rem;
+    color: var(--black-content);
+}
+
+.custom-divider {
+    display: flex;
+    place-self: center;
+    width: 8rem;
+    height: 3px;
+    border-radius: 1.5px;
+    background-color: var(--bg-accent);
+}
+
+.login-form,
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 25rem;
+    gap: 1rem;
+}
+
+.login-inputs,
+.signup-inputs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 25rem;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.input-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.password-icon svg:hover,
+.eye-slash-icon:hover,
+.eye-icon:hover {
+    cursor: pointer;
+}
+
+.login-checkbox,
+.signup-checkbox {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 1.25rem;
+    margin-left: 2rem;
+    margin-bottom: 0.75rem;
+    color: var(--base-content);
+    cursor: pointer;
+}
+
+.signup-checkbox a {
+    text-decoration: none;
+    color: var(--bg-accent);
+}
+
+.signup-checkbox a:hover {
+    text-decoration: underline;
+}
+
+label {
+    font-weight: 300;
+    color: var(--bg-neutral-accent);
+    cursor: pointer;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.custom-checkbox {
+    display: none;
+}
+
+.checkbox-icon {
+    cursor: pointer;
+}
+
+.custom-checkbox:checked+.checkbox-label .checkbox-icon {
+    content: url('../assets/icons/checked.svg');
+}
+
+.login-options,
+.signup-options {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap: 1.5rem;
+}
+
+.login-footer {
+    position: absolute;
+    bottom: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 3rem;
+    gap: 2.5rem;
+}
+
+.login-footer a {
+    text-decoration: none;
+    color: var(--bg-neutral-accent);
+}
+
+.login-footer a:hover {
+    color: var(--bg-accent);
+}
+
+.blink {
+    animation: blink 1s linear both;
+}
+
+#signup-btn.disabled:hover {
+    cursor: not-allowed;
+    background-color: var(--bg-neutral);
+}
+
+@keyframes slideToPosition {
+    0% {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    100% {
+        top: calc(4rem - (16rem - 6.25rem) / 2);
+        left: calc(4.5rem - (16rem - 6.25rem) / 2);
+        transform: translate(0, 0) scale(0.39);
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes blink {
+
+    0%,
+    50%,
+    100% {
+        opacity: 1;
+    }
+
+    25%,
+    75% {
+        opacity: 0;
+    }
+}
+
+@media screen and (max-width: 48rem) {
+    .main-logo {
+        width: 8rem;
+    }
+
+    .call-to-signup {
+        position: unset;
+        top: unset;
+        right: unset;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        gap: 1rem;
+    }
+
+    .login-header h1,
+    .signup-header h1 {
+        font-size: 3rem;
+    }
+
+    .login-wrapper,
+    .signup-wrapper {
+        padding: 2rem 1rem;
+    }
+
+    .checkbox-label {
+        font-size: 1rem;
+    }
+
+    @keyframes slideToPosition {
+        0% {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        100% {
+            top: calc(2rem - (8rem - 4rem) / 2);
+            left: calc(2rem - (8rem - 4rem) / 2);
+            transform: translate(0, 0) scale(0.5);
+        }
+    }
+}
+
+@media screen and (max-width: 35rem) {
+    .registry-wrapper {
+        justify-content: center;
+        gap: 2rem;
+    }
+
+    .main-logo {
+        width: 6.25rem;
+    }
+
+    .login-wrapper,
+    .signup-wrapper {
+        margin-top: 6rem;
+        padding: 2rem 1rem 1rem 1rem;
+        border-radius: 1rem;
+    }
+
+    .login-header,
+    .signup-header {
+        gap: 0.5rem;
+    }
+
+    .login-header h1,
+    .signup-header h1 {
+        font-size: 1.75rem;
+    }
+
+    .custom-divider {
+        width: 5rem;
+    }
+
+    .login-inputs,
+    .signup-inputs {
+        gap: 0.5rem;
+    }
+
+    .login-options,
+    .signup-options {
+        flex-direction: column-reverse;
+    }
+
+    #back-to-login {
+        top: 1rem;
+        left: 1rem;
+    }
+
+    .login-footer {
+        position: unset;
+    }
+
+    @keyframes slideToPosition {
+        0% {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        100% {
+            top: calc(1rem - (6.25rem - 2rem) / 2);
+            left: calc(1rem - (6.25rem - 2rem) / 2);
+            transform: translate(0, 0) scale(0.32);
+        }
+    }
+}
+
+@media screen and (max-width: 25rem) {
+
+    .login-form,
+    .signup-form {
+        gap: 1rem;
+    }
+
+    .login-options {
+        gap: 1rem;
+    }
+}

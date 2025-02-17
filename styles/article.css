@@ -1,0 +1,91 @@
+* {
+    scroll-behavior: smooth;
+    transition: 200ms ease;
+}
+
+.article {
+    max-width: 65rem;
+    line-height: 1.5;
+}
+
+.section-headline {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.main-headline {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--black-content);
+    line-height: normal;
+}
+
+.accentuated {
+    color: var(--bg-accent);
+}
+
+.article h2 {
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.75rem;
+    font-weight: 700;
+}
+
+.article h3 {
+    font-size: 1.25rem;
+}
+
+.article p {
+    margin-bottom: 1rem;
+}
+
+.step-by-step-guide {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.step-details {
+    display: flex;
+    justify-content: space-between;
+}
+
+.step-number {
+    display: flex;
+    align-items: flex-start;
+    max-width: 2rem;
+    width: 100%;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+ul {
+    list-style-position: inside;
+}
+
+ol>li {
+    list-style-position: inside;
+    font-weight: 600;
+}
+
+ol li ul {
+    list-style-position: inside;
+    list-style-type: disc;
+    margin: 0.5rem 0;
+    margin-left: 1.5rem;
+    font-weight: 400;
+}
+
+@media screen and (max-width: 48rem) {
+    .main-headline {
+        font-size: 2.5rem;
+    }
+
+    .article h2 {
+        font-size: 1.5rem;
+    }
+}

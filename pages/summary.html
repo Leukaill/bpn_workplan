@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A visual project management tool for tracking and managing tasks and work items within a workflow.">
+
+    <title>BPN Workbook - Summary</title>
+
+    <link rel="shortcut icon" href="../assets/img/logo-bpn-removebg-preview.png" type="image/x-icon">
+    <link rel="stylesheet" href="../styles/fonts.css">
+    <link rel="stylesheet" href="../styles/base.css">
+    <link rel="stylesheet" href="../styles/assets.css">
+    <link rel="stylesheet" href="../styles/landscape.css">
+    <link rel="stylesheet" href="../styles/header.css">
+    <link rel="stylesheet" href="../styles/sidebar.css">
+    <link rel="stylesheet" href="../styles/summary.css">
+    <link rel="stylesheet" href="../style.css">
+    <script src="../js/auth-guard.js"></script>
+
+</head>
+
+<body onload="initSummaryPage()">
+
+    <div class="page-wrapper">
+        <aside id="navigation-content"></aside>
+        <main>
+            <header id="header-content"></header>
+            <section id="summary-stats-wrapper" class="summary-content">
+                <div class="headline-wrapper">
+                    <h1 class="main-headline">BPN Workbook</h1>
+                    <div class="divider-vertical divider-accent"></div>
+                    <span></span>
+                </div>
+                <div id="summary-content" class="summary-wrapper"></div>
+            </section>
+            <div id="mobile-greeting" class="mobile-greeting hidden">
+                <span id="greeting-time-mobile">Good afternoon,</span>
+                <span id="greeting-username-mobile">Guest</span>
+            </div>
+        </main>
+    </div>
+
+    <div id="landscape-wrapper"></div>
+
+
+    <script src="../js/templates.js"></script>
+    <script src="../js/summary.js"></script>
+    <script src="../script.js"></script>
+    <script src="../js/landscape.js"></script>
+    <script src="../js/set-active-nav-link.js"></script>
+
+</body>
+
+</html>

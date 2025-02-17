@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="A visual project management tool for tracking and managing tasks and work items within a workflow.">
+
+    <title>BPN ProjeX</title>
+
+    <link rel="shortcut icon" href="./assets/img/logo-bpn-removebg-preview.png" type="image/x-icon">
+    <link rel="stylesheet" href="../styles/fonts.css">
+    <link rel="stylesheet" href="./styles/base.css">
+    <link rel="stylesheet" href="./styles/assets.css">
+    <link rel="stylesheet" href="./styles/landscape.css">
+    <link rel="stylesheet" href="./styles/login.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body onload="initAuthPage()">
+
+    <div class="overlay-wrapper">
+        <div class="overlay show"></div>
+        <img class="main-logo" src="./assets/logo-bpn-removebg-preview.png" alt="Join Logo">
+    </div>
+
+    <main class="registry-wrapper">
+        <section id="login-wrapper" class="login-wrapper show">
+            <form class="login-form" onsubmit="login(event); return false;" novalidate>
+                <div class="login-header">
+                    <h1>Log in</h1>
+                    <div class="custom-divider"></div>
+                </div>
+                <div class="login-inputs">
+                    <div class="input-field">
+                        <input type="email" id="login-email" placeholder="Email" required>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none"
+                            viewBox="0 0 256 256">
+                            <path
+                                d="M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48ZM203.43,64,128,133.15,52.57,64ZM216,192H40V74.19l82.59,75.71a8,8,0,0,0,10.82,0L216,74.19V192Z">
+                            </path>
+                        </svg>
+                        <p id="error-login-email" class="error-message">
+                            *Please enter a valid email address.
+                        </p>
+                    </div>
+                    <div class="input-field">
+                        <input type="password" id="login-password" placeholder="Password" required>
+                        <div id="login-password-icon" class="password-icon"></div>
+                        <p id="error-login-password" class="error-message">
+                            *Type in at least 6 characters.
+                        </p>
+                    </div>
+                </div>
+                <div class="login-checkbox">
+                    <input type="checkbox" id="login-checkbox" class="custom-checkbox" name="login-checkbox">
+                    <label for="login-checkbox" class="checkbox-label">
+                        <img src="../assets/icons/unchecked.svg" alt="Unchecked" class="checkbox-icon">
+                        Remember me
+                    </label>
+                </div>
+                <div class="login-options">
+                    <button type="submit" class="btn btn-lg" aria-label="login">Log in</button>
+                    <!-- <button class="btn btn-lg btn-outline" aria-label="guest-login" onclick="login(event, true)">
+                        Guest Log in
+                    </button> -->
+
+                </div>
+            </form>
+        </section>
+        <section id="signup-wrapper" class="signup-wrapper hidden">
+            <button id="back-to-login" class="btn btn-ghost btn-circle btn-accent" onclick="toggleAuth(false)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 256 256">
+                    <path
+                        d="M228,128a12,12,0,0,1-12,12H69l51.52,51.51a12,12,0,0,1-17,17l-72-72a12,12,0,0,1,0-17l72-72a12,12,0,0,1,17,17L69,116H216A12,12,0,0,1,228,128Z">
+                    </path>
+                </svg>
+            </button>
+            <form class="signup-form" onsubmit="addUser(event); return false;" novalidate>
+                <div class="signup-header">
+                    <h1>Sign up</h1>
+                    <div class="custom-divider"></div>
+                </div>
+                <div class="signup-inputs">
+                    <div class="input-field">
+                        <input type="text" id="signup-name" placeholder="Name" required>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none"
+                            viewBox="0 0 256 256">
+                            <path
+                                d="M230.92,212c-15.23-26.33-38.7-45.21-66.09-54.16a72,72,0,1,0-73.66,0C63.78,166.78,40.31,185.66,25.08,212a8,8,0,1,0,13.85,8c18.84-32.56,52.14-52,89.07-52s70.23,19.44,89.07,52a8,8,0,1,0,13.85-8ZM72,96a56,56,0,1,1,56,56A56.06,56.06,0,0,1,72,96Z">
+                            </path>
+                        </svg>
+                        <p id="error-signup-name" class="error-message">
+                            *Please enter first- and surname.
+                        </p>
+                    </div>
+                    <div class="input-field">
+                        <input type="email" id="signup-email" placeholder="Email">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none"
+                            viewBox="0 0 256 256">
+                            <path
+                                d="M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48ZM203.43,64,128,133.15,52.57,64ZM216,192H40V74.19l82.59,75.71a8,8,0,0,0,10.82,0L216,74.19V192Z">
+                            </path>
+                        </svg>
+                        <p id="error-signup-email" class="error-message">
+                            *Please enter a valid email address.
+                        </p>
+                    </div>
+                    <div class="input-field">
+                        <input type="password" id="signup-password" placeholder="Password" required>
+                        <div id="signup-password-icon" class="password-icon"></div>
+                        <p id="error-signup-password" class="error-message">
+                            *Type in at least 6 characters.
+                        </p>
+                    </div>
+                    <div class="input-field">
+                        <input type="password" id="signup-confirm-password" placeholder="Password">
+                        <div id="signup-confirm-password-icon" class="password-icon"></div>
+                        <p id="error-signup-confirm-password" class="error-message">
+                            *Passwords do not match.
+                        </p>
+                    </div>
+                </div>
+                <div class="signup-checkbox">
+                    <input type="checkbox" id="signup-checkbox" class="custom-checkbox" name="signup-checkbox" required>
+                    <label for="signup-checkbox" class="checkbox-label">
+                        <img src="../assets/icons/unchecked.svg" alt="Unchecked" class="checkbox-icon">
+                        <p>
+                            I accept the <a href="./pages/privacy-policy.html">Privacy Policy</a>
+                        </p>
+                    </label>
+                </div>
+                <div class="signup-options">
+                    <button type="submit" id="signup-btn" class="btn btn-lg" aria-label="signup">Sign up</button>
+                </div>
+            </form>
+        </section>
+        <div id="call-to-signup" class="call-to-signup show">
+            <p>Not a Join user?</p>
+            <button id="toggle-auth-btn" class="btn" aria-label="signup" onclick="toggleAuth(true)">Sign up</button>
+        </div>
+        <footer class="login-footer">
+            <a href="./pages/privacy-policy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+            <a href="./pages/legal-notice.html" target="_blank" rel="noopener noreferrer">Legal Notice</a>
+        </footer>
+    </main>
+
+    <div id="landscape-wrapper"></div>
+
+    <div id="successful-signup-modal" class="feedback-modal hidden">
+        <div class="feedback-modal-content">
+            <p>You signed up successfully</p>
+        </div>
+    </div>
+
+    <div id="failed-signup-modal" class="feedback-modal hidden">
+        <div class="feedback-modal-content">
+            <p>This email is already registered</p>
+        </div>
+    </div>
+
+    <script src="./js/templates.js"></script>
+    <script src="./js/auth-page-init.js"></script>
+    <script src="./js/auth-pw-toggle.js"></script>
+    <script src="./js/registry.js"></script>
+    <script src="./js/registry-validation.js"></script>
+    <script src="./js/login.js"></script>
+    <script src="./js/landscape.js"></script>
+    <script src="./script.js"></script>
+
+</body>
+
+</html>
